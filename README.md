@@ -14,7 +14,6 @@
 
 ---
 
-``` Link ``` : [Click Here](https://vinayakgoyal2208.github.io/Catering-Management-System/)
 
 ## 1. Introduction
 
