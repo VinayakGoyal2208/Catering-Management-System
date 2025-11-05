@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Catering Reservation System | Indian Catering</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <i class="fas fa-utensils"></i> Indian Catering
+      </div>
+      <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+
+      <ul id="mainNav">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li> 
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><button id="viewCartBtn" style="display:none;"><i class="fas fa-shopping-cart"></i> Cart (<span id="cartItemCount">0</span>)</button></li>
+        <li><button id="loginBtn"><i class="fas fa-sign-in-alt"></i> Login</button></li>
+        <li><button id="registerBtn"><i class="fas fa-user-plus"></i> Sign Up</button></li>
+        <li><button id="logoutBtn" style="display:none;"><i class="fas fa-sign-out-alt"></i> Logout</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Authentic Indian Catering for Every Occasion</h1>
+      <p>Celebrate every event with traditional flavors, premium service, and unforgettable taste.</p>
+      <button onclick="scrollToSection('menu')">Explore Menu</button>
+    </div>
+    <div class="hero-image">
+      </div>
+  </section>
+
+  <section id="about">
+    <h2>Our Heritage, Your Celebration</h2>
+    <div class="about-content">
+      <div style="flex: 1; min-width: 300px;">
+        <p>We bring India’s rich culinary heritage to your table with fresh, locally sourced ingredients. **Indian Catering** was founded on the principle of sharing authentic, regional Indian cuisine, prepared with love and traditional techniques. From the vibrant spices of the South to the rich curries of the North, our mission is to provide an unforgettable gastronomic journey for every guest.</p>
+        <p>Our commitment extends beyond food to a **seamless and delightful experience**, ensuring every grand wedding, intimate celebration, or corporate event is executed perfectly. We are proud to promote our traditional Indian culture through our exquisite dishes.</p>
+      </div>
+      <img src="https://images.unsplash.com/photo-1673081752959-addbc864f678?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGNhdGVyaW5nJTIwcmVzZXJ2YXRpb24lMjBzeXN0ZW18ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600" alt="Indian Cuisine Spread" class="about-image">
+    </div>
+  </section>
+
+  <section id="services">
+    <h2>Catering Services Provided</h2>
+    <div class="service-list">
+      <div class="service">
+        <i class="fas fa-ring"></i>
+        <h3>Wedding Events</h3>
+        <p>Full-service catering and event planning for your big day, from intimate ceremonies to grand receptions, focusing on personalized menus.</p>
+      </div>
+      <div class="service">
+        <i class="fas fa-briefcase"></i>
+        <h3>Corporate Gatherings</h3>
+        <p>Professional catering for business meetings, conferences, and office parties with timely delivery and impeccable presentation.</p>
+      </div>
+      <div class="service">
+        <i class="fas fa-birthday-cake"></i>
+        <h3>Private Parties</h3>
+        <p>Customized menus for birthdays, anniversaries, and family celebrations, designed to match your specific theme and taste.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu">
+    <h2>Our Menu</h2>
+    <input type="text" id="searchBar" placeholder="Search dishes..." onkeyup="filterProducts()">
+    
+    <div id="dynamicContent" class="menu-grid">
+        <div id="menuPreview" class="menu-grid"></div>
+        <p id="authMessage"><a href="#" onclick="showAuthModal('login')">Sign in to order</a></p>
+    </div>
+  </section>
+
+  <section id="userDashboard" style="display:none;">
+    <h2><i class="fas fa-list-alt"></i> My Orders</h2>
+    <div id="myOrderList">
+      </div>
+  </section>
+  
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p><i class="fas fa-envelope"></i> info@indiancatering.com | <i class="fas fa-phone"></i> +91-9876543210</p>
+    <form id="contactForm">
+      <input type="text" id="contactName" placeholder="Name" required>
+      <input type="email" id="contactEmail" placeholder="Email" required>
+      <input type="tel" id="contactPhone" placeholder="Phone Number (Optional)">
+      <textarea id="contactMessage" placeholder="Message"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <div id="contactMessageAlert" style="margin-top: 15px;"></div>
+  </section>
+
+  <footer>
+    <p>© 2025 Indian Catering Reservation System | Designed with ❤️ in India</p>
+  </footer>
+
+  <div id="authModal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('authModal')">&times;</span>
+      <form id="registerForm" style="display:none;">
+        <h2><i class="fas fa-user-plus"></i> Sign Up</h2>
+        <input type="text" id="regName" placeholder="Full Name" required>
+        <input type="email" id="regEmail" placeholder="Email" required>
+        <input type="tel" id="regPhone" placeholder="Phone Number (10 digits)" pattern="[0-9]{10}" title="Phone number must be 10 digits" required> 
+        <input type="password" id="regPassword" placeholder="Password (min 6 chars)" minlength="6" required>
+        <div class="error-message" id="regError" style="color:red; margin-bottom: 10px;"></div>
+        <button type="submit">Register</button>
+        <p>Already have an account? <a href="#" id="switchToLogin">Login</a></p>
+      </form>
+      <form id="loginForm" style="display:none;">
+        <h2><i class="fas fa-sign-in-alt"></i> Login</h2>
+        <input type="email" id="loginEmail" placeholder="Email" required>
+        <input type="password" id="loginPassword" placeholder="Password" required>
+        <div class="error-message" id="loginError" style="color:red; margin-bottom: 10px;"></div>
+        <button type="submit">Login</button>
+        <p>Don't have an account? <a href="#" id="switchToRegister">Sign Up</a></p>
+      </form>
+    </div>
+  </div>
+  
+  <div id="cartModal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('cartModal')">&times;</span>
+      <h2><i class="fas fa-shopping-cart"></i> Your Cart</h2>
+      <div class="cart-header-row">
+        <span>Item</span>
+        <span>Price</span>
+        <span>Quantity</span>
+        <span>Subtotal</span>
+      </div>
+      <div id="cartItemsContainer">
+        </div>
+      <div id="cartTotal" style="text-align: right; margin-top: 20px;"></div>
+      <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+        <button class="btn" onclick="clearCart()" style="background: red;">Clear Cart</button>
+        <button class="btn" id="proceedToCheckoutBtn">Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
+  
+  <div id="checkoutModal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('checkoutModal')">&times;</span>
+      <h2><i class="fas fa-clipboard-list"></i> Order Details</h2>
+      <form id="checkoutForm">
+        <input type="text" id="orderName" placeholder="Full Name" required>
+        <input type="tel" id="orderPhone" placeholder="Phone Number (10 digits)" pattern="[0-9]{10}" title="Phone number must be 10 digits" required>
+        <select id="orderEventType" required>
+          <option value="">Select Event Type</option>
+          <option value="Wedding">Wedding</option>
+          <option value="Birthday">Birthday</option>
+          <option value="Corporate">Corporate Event</option>
+          <option value="PrivateParty">Private Party</option>
+          <option value="Other">Other</option>
+        </select>
+        <input type="date" id="orderEventDate" required>
+        <input type="number" id="orderGuests" placeholder="Number of Guests (Min 10)" min="10" required>
+        <textarea id="orderAddress" placeholder="Full Event Address" rows="3" required></textarea>
+        <div class="error-message" id="checkoutError" style="color:red; margin-bottom: 10px;"></div>
+        <button type="submit">Confirm and Place Order</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="js/app.js"></script> 
+
+  <script>
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+    window.closeModal = (id) => { document.getElementById(id).style.display = 'none'; };
+    window.openModal = (id) => { document.getElementById(id).style.display = 'flex'; };
+
+    window.showAuthModal = (formType) => {
+        openModal('authModal');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        if (formType === 'register') {
+            registerForm.style.display = 'block';
+            loginForm.style.display = 'none';
+        } else {
+            loginForm.style.display = 'block';
+            registerForm.style.display = 'none';
+        }
+        // Close mobile menu when opening modal
+        document.getElementById('mainNav').classList.remove('active');
+    };
+    
+    // Auth Modal event listeners
+    const loginBtn = document.getElementById('loginBtn');
+    const registerBtn = document.getElementById('registerBtn');
+    const switchToLogin = document.getElementById('switchToLogin');
+    const switchToRegister = document.getElementById('switchToRegister');
+    const closeBtns = document.querySelectorAll('.modal-content .close');
+    const mainNav = document.getElementById('mainNav');
+    const menuToggle = document.getElementById('menuToggle');
+
+    loginBtn.addEventListener('click', () => showAuthModal('login'));
+    registerBtn.addEventListener('click', () => showAuthModal('register'));
+    switchToLogin.addEventListener('click', (e) => { e.preventDefault(); showAuthModal('login'); });
+    switchToRegister.addEventListener('click', (e) => { e.preventDefault(); showAuthModal('register'); });
+
+    // Handle mobile menu toggle (NEW)
+    menuToggle.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+    });
+
+    closeBtns.forEach(btn => btn.addEventListener('click', (e) => {
+        const modal = e.target.closest('.modal');
+        if (modal) closeModal(modal.id);
+    }));
+    window.onclick = (e) => {
+        if (e.target.classList.contains('modal')) closeModal(e.target.id);
+    };
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const minDate = tomorrow.toISOString().split('T')[0];
+        const dateInput = document.getElementById('orderEventDate');
+        if (dateInput) {
+            dateInput.min = minDate;
+        }
+        // Handle menu link clicks on mobile
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    mainNav.classList.remove('active');
+                }
+            });
+        });
+    });
+  </script>
+</body>
+</html>
