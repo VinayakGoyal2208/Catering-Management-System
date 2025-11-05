@@ -66,7 +66,7 @@ To run this project locally, you need a Firebase project and a local web server 
 git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
 cd catering-reservation-and-ordering-system
 
-** ### Step 2: Configure Firebase Credentials **
+### Step 2: Configure Firebase Credentials 
 You must update the configuration file with your own Firebase details.
 
 1. Open js/firebase-config.js.
