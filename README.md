@@ -35,7 +35,7 @@ The system is designed with distinct user and administrator modules, focusing on
 * **Real-Time Order History:** Orders placed or updated by the Admin are instantly reflected in the user's **"My Orders"** dashboard without requiring a page refresh.
 * **Secure Checkout:** Place orders with event details (date, guest count, address).
 
-### 🛠️ Admin Features (`admin@catering.com`)
+### 🛠️ Admin Features 
 * **Product Management:** Add, edit, and delete catering items/products in real-time.
 * **Real-Time Order Management:** View all incoming orders instantly.
 * **Status Updates:** Easily update order status (`Pending`, `Confirmed`, `Completed`) with immediate reflection on the customer dashboard.
