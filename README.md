@@ -66,14 +66,16 @@ To run this project locally, you need a Firebase project and a local web server 
 git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
 cd catering-reservation-and-ordering-system
 
+```
 ### Step 2: Configure Firebase Credentials
 ```
 You must update the configuration file with your own Firebase details.
 
 1. Open js/firebase-config.js.
 2. Replace the placeholder values in firebaseConfig with your actual project credentials.
+
 ```
-** ### Step 3: Run the Application **
+ ### Step 3: Run the Application 
 ```bash
 Install the http-server package globally (if not installed) and start the local server.
 
@@ -83,7 +85,9 @@ npm install -g http-server
 # Run the server
 http-server . -p 5500
 
-** ## 5. Project Structure **
+```
+## 5. Project Structure 
+```
 .
 ├── css/
 │   └── styles.css        # Complete and dynamic styling (including mobile media queries)
