@@ -91,7 +91,6 @@ http-server . -p 5500
 ```
 ## 5. Project Structure 
 ```
-.
 ├── css/
 │   └── styles.css        # Complete and dynamic styling (including mobile media queries)
 ├── js/
@@ -102,7 +101,3 @@ http-server . -p 5500
 │   └── firebase-config.js# Firebase SDK initialization and config
 ├── index.html            # Main HTML structure with all sections and modals
 └── README.md             # This file
-
-
-
-
