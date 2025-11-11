@@ -101,5 +101,6 @@ http-server . -p 5500
 │   └── firebase-config.js# Firebase SDK initialization and config
 ├── index.html            # Main HTML structure with all sections and modals
 └── README.md             # This file
+```
 
 <img width="1510" height="1573" alt="image" src="https://github.com/user-attachments/assets/7f1a84f1-387f-4498-a2e3-2c0e281fe09e" />
